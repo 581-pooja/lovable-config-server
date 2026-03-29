@@ -29,13 +29,10 @@ spring:
     url: jdbc:postgresql://pgvector.lovable-core.svc.cluster.local:5432/intelligence_db
     username: intelligence_user
     password: ${DB_PASSWORD}
-  ai:
-    model:
-      chat: openai
+
+ai:
     openai:
       api-key: ${AI_API_KEY}
-      base-url: https://openrouter.ai/api
-      chat:
+    chat:
         options:
           model: google/gemini-3-flash-preview
-          temperature: 0.2
