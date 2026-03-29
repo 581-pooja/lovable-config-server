@@ -10,17 +10,14 @@ spring:
     driver-class-name: org.postgresql.Driver
 
   ai:
-    model.chat: openai
-    openai:
-      api-key: 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
-      base-url: https://openrouter.ai/api
+    model:
+      chat: ollama
+    ollama:
+      base-url: http://localhost:11434
       chat:
         options:
-          model: google/gemini-3-flash-preview
+          model: llama3.2
           temperature: 0.2
-      embedding:
-        options:
-          model: qwen/qwen3-embedding-8b
 
 ---
 
@@ -32,10 +29,13 @@ spring:
     url: jdbc:postgresql://pgvector.lovable-core.svc.cluster.local:5432/intelligence_db
     username: intelligence_user
     password: ${DB_PASSWORD}
-
-ai:
+  ai:
+    model:
+      chat: openai
     openai:
       api-key: ${AI_API_KEY}
-    chat:
+      base-url: https://openrouter.ai/api
+      chat:
         options:
           model: google/gemini-3-flash-preview
+          temperature: 0.2
